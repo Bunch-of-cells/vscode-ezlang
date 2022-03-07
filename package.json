@@ -2,6 +2,7 @@
     "name": "ezlang",
     "displayName": "ezlang",
     "description": "Extension for the ezlang programming language",
+    "repository": "https://github.com/Bunch-of-cells/vscode-ezlang.git",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.65.0"

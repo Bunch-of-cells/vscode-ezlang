@@ -6,14 +6,44 @@
 			"include": "#keywords"
 		},
 		{
+			"include": "#preprocessor"
+		},
+		{
 			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#names"
+		},
+		{
+			"include": "#comments"
 		}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.ezlang",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(if|else|for|return|while)\\b"
+			}, {
+				"name": "keyword.types.ezlang",
+				"match": "\\b(char|bool|int|point|true|false|as)\\b"
+			}, {
+				"name": "keyword.define.ezlang",
+				"match": "\\b(ez|let|struct|static|true|false|as)\\b"
+			}, {
+				"name": "keyword.io.ezlang",
+				"match": "\\b(ezin|ezout|ezascii)\\b"
+			}]
+		},
+		"preprocessor": {
+			"patterns": [{
+				"name": "preprocessor.control.ezlang",
+				"match": "\\b(!ifdeclared|!else|!endif|!declare)\\b"
+			}, {
+				"name": "keyword.other.ezlang",
+				"match": "\\b(!use|!replace)\\b"
 			}]
 		},
 		"strings": {
@@ -26,7 +56,59 @@
 					"match": "\\\\."
 				}
 			]
-		}
+		},
+		"comments": {
+            "patterns": [
+                {
+                    "begin": "/*",
+                    "end": "*/",
+                    "name": "comment.block.ezlang"
+                },
+                {
+                    "name": "comment.line.ezlang",
+                    "begin": "//",
+                    "end": "\\n"
+                }
+            ]
+        },
+		"numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.samarium",
+                    "match": "\\b\\d+"
+                }
+            ]
+        },
+		"names": {
+            "patterns": [
+                {
+                    "match": "(\\struct)\\s*([A-Za-z][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": { "name": "keyword.define.ezlang" },
+                        "2": { "name": "entity.name.class.ezlang" }
+                    }
+                },
+                {
+                    "match": "([A-Za-z0-9]+|=>)((?:\\s*[A-Za-z0-9]+)*)\\s*(\\*)\\s*",
+                    "captures": {
+                        "1": { "name": "entity.name.function.ezlang" },
+                        "2": { "name": "variable.parameter.ezlang" },
+                        "3": { "name": "keyword.control.ezlang" }
+                    }
+                },
+                {
+                    "match": "([A-Za-z][A-Za-z0-9_]*)\\s*\\((?:\\s*(\\)|(?:\\s*\\w+\\s*,?)+)\\s*)?\\)",
+                    "captures": {
+                        "1": { "name": "entity.name.function.ezlang" },
+						"2": { "name": "variable.argument.ezlang" }
+                    }
+                },
+                {
+                    "name": "variable.name.ezlang",
+                    "match": "[A-Za-z][A-Za-z0-9_]*"
+                }
+            ]
+        }
 	},
 	"scopeName": "source.ezlang"
 }
