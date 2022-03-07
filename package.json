@@ -1,0 +1,25 @@
+{
+    "name": "ezlang",
+    "displayName": "ezlang",
+    "description": "Extension for the ezlang programming language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.65.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ezlang",
+            "aliases": ["ezlang", "ezlang"],
+            "extensions": [".ez"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ezlang",
+            "scopeName": "source.ezlang",
+            "path": "./syntaxes/ezlang.tmLanguage.json"
+        }]
+    }
+}
